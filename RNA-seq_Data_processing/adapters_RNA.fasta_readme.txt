@@ -1,0 +1,39 @@
+## Organize the quality control reference file adapters_RNA.fasta
+
+adapters_RNA.fasta is sorted according to FastQC results (Overrepresented sequences, Adapter Content) and known adapter. 
+adapters_RNA.fasta will be used for subsequent quality control. Therefore, it will affect the comparison rate. The format is as follows:
+
+```
+>xx1
+AATGATACGGCGACCACCGAGATCTACAC
+>xx2
+TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG
+>xx3
+CTGTCTCTTATACACATCTCCGAGCCCACGAGAC
+>xx4
+ATCTCGTATGCCGTCTTCTGCTTG
+>PrefixNX/1
+AGATGTGTATAAGAGACAG
+>PrefixNX/2
+AGATGTGTATAAGAGACAG
+>Trans1
+TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG
+>Trans1_rc
+CTGTCTCTTATACACATCTGACGCTGCCGACGA
+>Trans2
+GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG
+>Trans2_rc
+CTGTCTCTTATACACATCTCCGAGCCCACGAGAC
+>Clontech 1
+GCTTCCATTCACTCTGCGTTGATACCACTGCTTCCATTCACTCTGCGTTG
+>Clontech 2
+GTATCAACGCAGAGTGAATGGAAGCAGTGGTATCAACGCAGAGTGAATGG
+
+xx1-4:adapter added by known experiments;
+
+PrefixNX/1-Trans2_rc:The Adapter indicated in the Adapter Content bar of the FastQC result. For example, Nextera Transposase Sequence in the Adapter Content column corresponds to NexteraPE-PE.fa in the adapters folder.
+
+Clontech 1-n:The sequences indicated in the Overrepresented sequences column in the FastQC result. When the prompt is primer, the sequence needs to be added to adapters_RNA.fasta. When the prompt is no hit, the sequence can be ignored.
+```
+
+Note: The adapter files used for quality control on the same platform should be consistent; When comparing and analyzing platforms, the adapter files used for quality control on different platforms should also be consistent
